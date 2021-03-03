@@ -2,7 +2,7 @@
 layout: post
 title:  "KeyLookup & Covering Index"
 description: "một kỹ thuật nâng cao hiệu năng của SQLServer bằng cách loại bỏ KeyLookup"
-tags: sql, performance, index
+tags: sql performance index
 ---
 Chủ yếu tập trung tối ưu chi phí trả về dữ liệu khi thực hiện query với Nonclusterd Index.
 

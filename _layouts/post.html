@@ -4,15 +4,18 @@ layout: default
 {% unless site.dash.show_author == false %}
   {% include author.html %}
 {% endunless %}
+{% if page.tags != "" %}
+  {% include collecttags.html %}
+{% endif %}
 <div class="post">
   <h1 class="post-title">{{ page.title }}</h1>
-  {% if site.plugins contains "jekyll/tagging" %}
+  <!-- {% if site.plugins contains "jekyll/tagging" %} -->
   <div class="post-tags">
       {% for tag in page.tags %}
       <a class="tag" href="/tag/{{ tag }}/">{{ tag }}</a>
       {% endfor %}
   </div>
-  {% endif %}
+  <!-- {% endif %} -->
   <div class="post-date">Published on {{ page.date | date_to_string }}</div>
   {% if page.description != null %}
   <noscript>
