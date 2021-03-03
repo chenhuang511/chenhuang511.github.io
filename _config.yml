@@ -1,7 +1,7 @@
 title: Hoàng tự học
 author: Chen Huang
 email: hoangtd@softdreams.vn
-description: > # this means to ignore newlines until "show_exerpts:"
+description: >
   Học vui vẻ và post lên đây...
 show_excerpts: false # set to true to show excerpts on the homepage
 
@@ -28,8 +28,8 @@ dash:
   # supported colors: green, red, orange, blue, cyan, pink, teal, yellow, indigo, purple
   social_links:
     - url: mailto:hoangtd@softdreams.vn
-      icon: email-square
-      color: cyan
+      icon: envelope-o
+      color: green
     - url: 
       icon: skype
       color: red

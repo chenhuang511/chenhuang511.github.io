@@ -2,7 +2,10 @@
   <div class="wrapper">
     <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}<b class="command_prompt"></b><b class="blinking_cursor">_</b></a>
     <span class="social_links">
-        {% for link in site.dash.social_links %}<a class="color-{{ link.color }}-hover" href="{{ link.url }}"><i class="fab fa-{{ link.icon }}"></i></a>{% endfor %}
+        <!-- {% for link in site.dash.social_links %}<a class="color-{{ link.color }}-hover" href="{{ link.url }}"><i class="fab fa-{{ link.icon }}"></i></a>{% endfor %} -->
+        <a class="color-green-hover" href="mailto:hoangtd@softdreams.vn"><i class="fas fa-envelope-square"></i></a>
+        <a class="color-red-hover" href="skype:chenhuang511?chat"><i class="fab fa-skype"></i></a>
+        <a class="color-purple-hover" href="https://github.com/chenhuang511"><i class="fab fa-github-square"></i></a>
     </span>
   </div>
 </div>
