@@ -18,7 +18,7 @@ dash:
   date_format: "%b %-d, %Y"
 
   disqus:
-    shortname: chenhuang511-github-io
+    shortname: chenhuang511
 
   # generate social links in footer
   # supported colors: green, red, orange, blue, cyan, pink, teal, yellow, indigo, purple
