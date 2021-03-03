@@ -2,12 +2,14 @@
 layout: post
 title:  "KeyLookup & Covering Index"
 description: "nâng cao hiệu năng của SQLServer bằng cách tối ưu chi phí trả về từ query"
-tags: sql index key-lookup
+tags: sql index key-lookup dba
 ---
 
 > Chủ yếu tập trung tối ưu chi phí trả về dữ liệu khi thực hiện query với Nonclusterd Index.
 
 ## Setup
+
+Sử dụng setup cơ bản như ở bài viết [Setup ban đầu]({% post_url 2021-03-03-sqlperf-0-setup %})
 
 Bật hiển thị các thông số trả về khi query trên SSMS:
 
@@ -136,6 +138,8 @@ Chạy lại query3, ta thấy vẫn đạt được kết quả như khi ta m�
 * Khi xét 1 query cần đánh INCLUDE, tính toán số lần chạy của query đó (so với tương quan toàn query) dựa vào QueryStore, nếu query chạy nhiều lần mà chưa có INCLUDE, khi đó nên thêm.
 
 ## Tham khảo
+
+[Full sql trong bài viết](/assets/sql/sqlperf-2-covering-index.sql)
 
 [https://www.mssqltips.com/sqlservertutorial/258/eliminating-bookmark-keyrid-lookups/](https://www.mssqltips.com/sqlservertutorial/258/eliminating-bookmark-keyrid-lookups/)
 
