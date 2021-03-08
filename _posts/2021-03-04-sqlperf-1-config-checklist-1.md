@@ -31,7 +31,7 @@ Hoặc ta có thể cấu hình qua giao diện của SSMS
 
 Với cấu hình này, SQLServer sẽ lấy nhiều nhất có thể RAM của máy chủ để dành cho Buffer của nó; do đó khi theo dõi Metric của máy chủ này sẽ thấy RAM luôn ở mức cao (> 80%)
 
-Do đó để theo dõi máy chủ có thiếu RAM dành cho SQLServer hay không, không thể xác định bằng cách nhìn vào MemUsage của máy được. Kỹ thuật này ta sẽ bàn sau.
+Do đó để theo dõi máy chủ có thiếu RAM dành cho SQLServer hay không, **không thể xác định** bằng cách nhìn vào MemUsage của máy được. Kỹ thuật này ta sẽ bàn sau.
 
 ## 2. Cấu hình mở QueryStore
 
