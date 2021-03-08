@@ -171,3 +171,25 @@ GO
 ```
 
 ## Hết phần 2...
+
+## Tham khảo
+
+### TempDB
+
+[Checklist](/assets/books/eBook-SQL-Server-Setup-Checklist.pdf) của [Brent Ozar](https://www.brentozar.com/)
+
+https://docs.microsoft.com/en-us/sql/relational-databases/databases/tempdb-database?view=sql-server-2017
+
+https://docs.microsoft.com/en-us/archive/blogs/psssql/sql-2016-it-just-runs-faster-automatic-tempdb-configuration
+
+https://docs.microsoft.com/en-US/troubleshoot/sql/performance/recommendations-reduce-allocation-contention
+
+https://www.sqlshack.com/how-to-detect-and-prevent-unexpected-growth-of-the-tempdb-database/
+
+### MAXDOP
+
+https://www.sentryone.com/blog/is-maxdop-configured-correctly#:~:text=What%20is%20the%20Effective%20MAXDOP,to%20a%20max%20of%2064
+
+https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option?view=sql-server-2017
+
+https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/configure-the-cost-threshold-for-parallelism-server-configuration-option?view=sql-server-2017
