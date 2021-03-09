@@ -74,9 +74,11 @@ Có một chút trick ở đây đó là ta sét fileSize là 1MB bởi vì, tro
 
 Tư tưởng là như sau: Với dung lượng đã cấp cho thư mục chứa file Temp, ta sẽ cấp phát sẵn **90%** dung lượng thư mục này cho tempDB và không cho phép tự động tăng trưởng.
 
-Đồng thời **tạo sẵn** số lượng tempDB bằng với số lượng logicalProcessor của máy chủ, **nhưng tối đa là 8**. Bởi vì SQLServer tự động tạo thêm tempDB nếu đạt đến giới hạn dung lượng tối đa của tempDB hiện tại, và quá trình tự động này sẽ gây ra **phân mảnh dữ liệu** nếu ta cấp phát cho mỗi tempDB dung lượng quá nhỏ.
+Đồng thời **tạo sẵn** số lượng tempDB bằng với số lượng logicalProcessor của máy chủ, **nhưng tối đa là 8**. 
 
-Kiểm tra bằng query:
+Bởi vì SQLServer tự động tạo thêm tempDB nếu đạt đến giới hạn dung lượng tối đa của tempDB hiện tại, và quá trình tự động này sẽ gây ra **phân mảnh dữ liệu** nếu ta cấp phát cho mỗi tempDB dung lượng quá nhỏ.
+
+Kiểm tra số logicalProcessor bằng query:
 
 ```sql
 SELECT (cpu_count / hyperthread_ratio) AS PhysicalCPUs,
@@ -112,6 +114,8 @@ Sau đó trong quá trình sử dụng, quan sát các tempDb, ta có thể cấ
 > Tốt nhất là khi cài, SQL Server sẽ tự nhận biết số lượng tempDB cần thiết; ta có thể cấu hình initSize hay autoGrowth và location ở đây (hình dưới)
 
 ![image](/assets/images/sqlperf-1-config-6.png)
+
+* Trước SQLServer 2017, dung lượng tối đa mỗi tempdb được cấp là 1GB :)) Còn từ v2017, con số này là 256GB.
 
 ## 5. Cấu hình tính toán song song (Parallelism)
 
