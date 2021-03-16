@@ -5,7 +5,16 @@ description: "Các công việc cần thiết để maintain index thường xuy
 tags: sql index maintain dba
 ---
 
-## 1. Index Missing
+## 0. Kế hoạch đề xuất
+
+| Công việc          | Thao tác        | Tần suất  |
+| ------------- |:-------------| -----:|
+| [Index Missing](#head1)      | Create Indexes | Hàng tháng (Vào đêm) |
+| [Index Redundant, Replicate](#head2)     | Remove/Edit Indexes      |   Hàng tháng (Vào đêm) |
+| [Heap table, Index Scan](#head3) | Xem xét và chỉnh sửa      |    Hàng tháng |
+| [Index Physical statistic report](#head4) | Rebuild/reorganize/update statistic      |    Hàng tháng (Vào đêm) |
+
+## <a name="head1"> 1. Index Missing</a>
 
 Sử dụng View có sẵn của SQL Server.
 
@@ -62,7 +71,7 @@ CREATE NONCLUSTERED INDEX idx_generalledger_companyid_posteddate_typeledger
 
 > Cuối cùng là không phải recommend nào trong missing_index cũng là hợp lý với DB, cần phải phân tích kỹ lợi/hại trước khi áp dụng các recommend này.
 
-## 2. Redundant, Overlapping & Duplicate Index
+## <a name="head2"> 2. Redundant, Overlapping & Duplicate Index </a>
 
 Cũng sử dụng các View (DMV) có sẵn của SQLServer, lấy ra các Index dư thừa, không cần thiết.
 * Đầu tiên, Duplicate Index là trường hợp các index được tạo trong DB giống hệt nhau về các trường (bao gồm cả INCLUDE)
@@ -233,7 +242,7 @@ Cũng không cần phải giải thích từng trường trong bảng kết qu�
 
 > Cũng như trường hợp missingIndex, ta cần xem xét kỹ các thống kê hay recommend ở đây có thích hợp với DB đang sử dụng hay không.
 
-## 3. Index Usage
+## <a name="head3"> 3. Index Usage </a>
 
 Một công việc maintain cần thiết cho các index trong DB đó là thống kê tình trạng sử dụng của tất cả index. Cùng với đó để xem xét các trường hợp có thể action để tối ưu hiệu năng của hệ thống.
 
@@ -332,7 +341,7 @@ Việc khử IndexScan là một câu chuyện dài và có thể bàn đến tr
  * Index chưa phải là **Covering Index**: thiếu ```INCLUDE``` các trường cần SELECT.
  * Sử dụng các FUNCTION ở điều kiện ```WHERE``` hay sử dụng các View lồng nhau.
 
- ## 4. Index Physical Statistic Report
+ ## <a name="head4"> 4. Index Physical Statistic Report </a>
 
  Bộ built-in báo cáo của SQL Server cho ta check tình hình lưu trữ của các Index của từng DB.
 
