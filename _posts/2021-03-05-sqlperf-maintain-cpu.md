@@ -125,6 +125,28 @@ Bằng cách insert kết quả của ```sp_who``` vào bảng tạm, ta có th�
 
 > Công việc còn lại vẫn là xử lý query gây cao tải ở CPU
 
+## Tips
+
+Thay vì remote vào DB Server để kiểm tra %CPU ta có thể sử dụng query sau:
+
+```sql
+SELECT [cpu_idle] = record.value('(./Record/SchedulerMonitorEvent/SystemHealth/SystemIdle)[1]', 'int'),
+       [cpu_sql]  = record.value('(./Record/SchedulerMonitorEvent/SystemHealth/ProcessUtilization)[1]', 'int'),
+       [%_cpu]= 100 * record.value('(./Record/SchedulerMonitorEvent/SystemHealth/ProcessUtilization)[1]', 'int') /
+                (record.value('(./Record/SchedulerMonitorEvent/SystemHealth/SystemIdle)[1]', 'int') +
+                 record.value('(./Record/SchedulerMonitorEvent/SystemHealth/ProcessUtilization)[1]',
+                              'int'))
+FROM (
+         SELECT TOP 1 CONVERT(XML, record) AS record
+         FROM sys.dm_os_ring_buffers
+         WHERE ring_buffer_type = N'RING_BUFFER_SCHEDULER_MONITOR'
+           AND record LIKE '% %'
+         ORDER BY TIMESTAMP DESC
+     ) as cpu_usage
+```
+
+![image](/assets/images/sqlperf-3-maintain-cpu-4.png)
+
 ## Tham khảo
 
 [https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql?view=sql-server-2017](https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql?view=sql-server-2017)
