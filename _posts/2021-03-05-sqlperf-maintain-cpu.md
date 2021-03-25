@@ -6,7 +6,7 @@ tags: sql maintain cpu dba
 
 ---
 
-## Liệt kê các query/session đang tốn CPU
+## 1. Liệt kê các query/session đang tốn CPU
 
 Sử dụng **DVM** built-in của SQLServer:
 
@@ -81,7 +81,7 @@ Như trong ví dụ trên, thực hiện KILL các session theo các điều ki�
 * query_text là query có prefix ```(@P0 varbinary(8000),@P1 int,@P2 varbinary(8000),@P3 nvarchar(4000)```
 * thời gian xử lý ở CPU > 20000 milliseconds
 
-## sp_who
+## 2. sp_who
 
 SQLServer cung cấp thêm một Procedure cho phép quản lý thêm các thông tin về Client so với DMV ở trên.
 
@@ -124,8 +124,9 @@ Bằng cách insert kết quả của ```sp_who``` vào bảng tạm, ta có th�
 ```
 
 > Công việc còn lại vẫn là xử lý query gây cao tải ở CPU
+>
 
-## Tips
+## 3. Tips
 
 Thay vì remote vào DB Server để kiểm tra %CPU ta có thể sử dụng query sau:
 
@@ -147,7 +148,7 @@ FROM (
 
 ![image](/assets/images/sqlperf-3-maintain-cpu-4.png)
 
-## Tham khảo
+## 4. Tham khảo
 
 [https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql?view=sql-server-2017](https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql?view=sql-server-2017)
 
