@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Các cấu hình cần thiết cho SQLServer để tăng hiệu năng (P2)"
-description: "Phần 1: Cấu hình về DataBase files, TempDB files, Parallelism"
+description: "Phần 2: Cấu hình về DataBase files, TempDB files, Parallelism"
 tags: sql configuration dba
 ---
 
