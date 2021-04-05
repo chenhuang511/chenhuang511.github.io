@@ -85,6 +85,10 @@ WHERE t.dbid = DB_ID('EASYBOOKS134')
 GROUP BY objtype, cacheobjtype;
 ```
 
+![image](/assets/images/sqlperf-1-config-10.png)
+
+Như ở trên, đang tốn 237MB Buffer cho các Adhoc query. :(
+
 ## 2. Tối ưu Adhoc query
 
 ### 2.1. Sử dụng cấu hình có sẵn của SQLServer
@@ -143,19 +147,9 @@ Như ở trên, ta đang quy định các đối tượng cần bỏ là:
 
 Sau khi tối ưu, ta có thể kiểm tra lại thành quả bằng cách chạy lại query như ở phần 1.2:
 
-```sql
-SELECT objtype,
-       cacheobjtype,
-       AVG(usecounts)                                   AS Avg_UseCount,
-       SUM(refcounts)                                   AS AllRefObjects,
-       SUM(CAST(size_in_bytes AS bigint)) / 1024 / 1024 AS Size_MB
-FROM sys.dm_exec_cached_plans decp
-         CROSS APPLY sys.dm_exec_sql_text(decp.plan_handle) t
-WHERE t.dbid = DB_ID('EASYBOOKS')
-  AND objtype = 'Adhoc'
-  AND usecounts < 5
-GROUP BY objtype, cacheobjtype;
-```
+![image](/assets/images/sqlperf-1-config-11.png)
+
+Good job!
 
 ## 3. Tham khảo
 
