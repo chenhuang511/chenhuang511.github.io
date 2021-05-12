@@ -1,5 +1,6 @@
 ---
-layout: post title:  "Tối ưu Table Variable với In-Memory Optimized Table"
+layout: post 
+title:  "Tối ưu Table Variable với In-Memory Optimized Table"
 description: "Xem xét khả năng thay thế Table Variable trong các trường hợp cụ thể"
 tags: sql index temp-table in-memory-table dba
 ---
