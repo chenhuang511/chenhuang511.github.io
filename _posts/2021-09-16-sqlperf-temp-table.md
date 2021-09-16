@@ -96,7 +96,6 @@ Ngược lại nếu số lượng item bé, @Table hoạt động tốt hơn.
 Thử nghiệm với 1M bản ghi, so với @tableVariable:
 
 * tempTable UPDATE nhanh hơn 6 lần
-
 * tempTable DELETE nhanh hơn 8 lần
 
 ```sql
