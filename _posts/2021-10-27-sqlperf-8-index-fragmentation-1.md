@@ -91,8 +91,8 @@ ORDER BY DDIPS.avg_fragmentation_in_percent desc
 
 * Dựa vào trạng thái Fragmentation của từng index trong từng table ở DB để quyết định Phương án xử lý;
 * Không xử lý với các Index có ```page_count``` < **100**
-* Thực hiện REBUILD INDEX với các Index có ngưỡng ```avg_fragmentation_in_percent``` > **70%**;
-* Thực hiện REORGANIZE INDEX với các Index có ngưỡng ```avg_fragmentation_in_percent``` từ **30 – 70%**;
+* Thực hiện REBUILD INDEX với các Index có ngưỡng ```avg_fragmentation_in_percent``` > **30%**;
+* Thực hiện REORGANIZE INDEX với các Index có ngưỡng ```avg_fragmentation_in_percent``` từ **10 – 30%**;
 * Bởi vì việc REBUILD INDEX gây ảnh hưởng khá lớn đến hiệu năng, và có lock dữ liệu khi xử lý; do đó việc thực hiện maintain index này nên được thực hiện trong thời gian **“peek time”** của hệ thống, ví dụ như vào cuối tuần.
 
 ### Có nhiều cách để Implement phương án xử lý trên, phần tiếp theo chúng ta dùng Stored Procedure và Cron Job với NodeJS để thực thi...
