@@ -167,6 +167,22 @@ jdbc:sqlserver://10.100.122.18:1433;database=EB88;ApplicationIntent=READONLY
 ```
 
 ```java
+    @Bean(destroyMethod = "close", name = "dataSourceReport")
+    @ConditionalOnExpression("#{!environment.acceptsProfiles('cloud') && !environment.acceptsProfiles('heroku')}")
+    public DataSource dataSourceReport(DataSourceProperties dataSourceProperties, JHipsterProperties jHipsterProperties) {
+        config.setDataSourceClassName(env.getProperty("spring.datasourceReport.driverClassName", String.class));
+        config.addDataSourceProperty("url", env.getProperty("spring.datasourceReport.url", String.class));
+        config.addDataSourceProperty("user", env.getProperty("spring.datasourceReport.username", String.class));
+        config.addDataSourceProperty("password", env.getProperty("spring.datasourceReport.password", String.class));
+        config.setJdbcUrl(env.getProperty("spring.datasourceReport.url", String.class));
+        config.setAutoCommit(env.getProperty("spring.datasourceReport.hikari.auto-commit", Boolean.class));
+        config.setAllowPoolSuspension(false);
+        config.setPoolName(env.getProperty("spring.datasourceReport.poolName"));
+        config.setLeakDetectionThreshold(0);
+
+        return new HikariDataSource(config);
+    }
+
     @Bean(name = "reportEntityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(
         EntityManagerFactoryBuilder builder,
@@ -178,6 +194,21 @@ jdbc:sqlserver://10.100.122.18:1433;database=EB88;ApplicationIntent=READONLY
     }
 ```
 
+```java
+public class SABillRepositoryImpl implements SABillRepositoryCustom {
+
+    @Autowired
+    @PersistenceContext(unitName = "entityManagerFactory")
+    private EntityManager entityManager;
+
+    @Autowired
+    @PersistenceContext(unitName = "reportEntityManagerFactory")
+    EntityManager entityManagerReadOnly;
+    
+    ...
+    
+    Query querySum = entityManagerReadOnly.createNativeQuery("select sum(a.TotalAll) " + sqlWhere.toString());
+```
 #### .NET
 
 Với **.NET** thì đương nhiên được hỗ trợ một cách native. Sử dụng connection string như sau:
