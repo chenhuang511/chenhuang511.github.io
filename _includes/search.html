@@ -1,0 +1,23 @@
+<div style="width: 40%">
+    <div class="search" id="search-container">
+        <input class="searchTerm" type="text" id="search-input" placeholder=" Search...">
+        <button type="submit" class="searchButton">
+            <i class="fa fa-search"></i>
+        </button>
+    </div>
+</div>
+<div style="padding: 10px">
+    <span id="results-container"></span>
+</div>
+<script src="assets/js/simple-jekyll-search.min.js"></script>
+<script>
+    window.simpleJekyllSearch = new SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: '{{ site.baseurl }}/search.json',
+        searchResultTemplate: '<li><a href="{{ site.url }}{url}" title="{desc}">{title}</a> <span style="font-size: 14px;color: #DAE4ED">({date})</span></li>',
+        noResultsText: 'No results found',
+        limit: 5,
+        fuzzy: 1,
+    })
+</script>
