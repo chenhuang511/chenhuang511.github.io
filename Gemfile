@@ -6,3 +6,5 @@ gem "jekyll-tagging"
 gem "kramdown-parser-gfm"
 
 gemspec
+
+gem "webrick", "~> 1.7"
