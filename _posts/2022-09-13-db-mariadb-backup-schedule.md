@@ -57,9 +57,9 @@ mysqldump --routines -u ${MYSQL_USER} -p${MYSQL_PASS} sdscrm | gzip > ${BKUP_DIR
 ```
 
 Một số điểm lưu ý:
-* File backup được tạo theo timestamp
 * Sử dụng thông tin account từ file môi trường ```/backup/.env```
 * Sử dụng Gzip để nén backup file
+* Vì đang tạo file backup theo từng ngày, nên cần có phương án quản lý để tránh có quá nhiều file backup làm tốn không gian lưu trữ.
 
 ## 4. Cấu hình cho cron job
 
