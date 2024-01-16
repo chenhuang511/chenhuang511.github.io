@@ -19,7 +19,7 @@ Xem xét câu truy vấn dưới đây, và sự khác nhau khi có thêm điề
 
 ![image](/assets/images/sqlperf-12-1.png)
 
-* Bảng ```VATInvoice``` đang có khoảng 6M bản ghi, bảng ```TicketHistory``` là khoảng 1.3M bản ghi;
+* Bảng ```VATInvoice``` đang có khoảng ``6M`` bản ghi, bảng ```TicketHistory``` là khoảng ``1.3M`` bản ghi;
 * ```ArisingDate``` có giá trị như nhau trên cả 2 bảng;
 * Thời gian truy vấn cho trường hợp bên trái là ``~8s``, bên phải là ``~11s``;
 
